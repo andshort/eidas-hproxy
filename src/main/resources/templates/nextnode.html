@@ -1,0 +1,29 @@
+<form name="redirectForm" action="" th:action="${nextNode.redirectUri}" method="post">
+    <noscript>
+        <input type="submit" value="Click here to continue"/>
+    </noscript>
+
+<input type="hidden" id="postLocationUrl" name="postLocationUrl" 			th:value="${nextNode.postLocationUrl}">
+<input type="hidden" id="redirectLocationUrl" name="redirectLocationUrl" 	th:value="${nextNode.redirectLocationUrl}">
+<div th:if="${nextNode.country} != ''" th:remove="tag">
+<input type="hidden" id="country" name="country" 							th:value="${nextNode.country}">
+</div>
+<input type="hidden" id="relayState" name="RelayState" 						th:value="${nextNode.RelayState}">
+<input type="hidden" id="SAMLRequest" name="SAMLRequest" 					th:value="${nextNode.SAMLRequest}">
+
+<div th:if="${debug} == true" th:remove="tag">
+<input type="submit" value="Send Request">
+</div>
+</form>
+
+<div th:if="${debug} == true" th:remove="tag">
+<span th:text="${nextNode.SAMLPlain}" th:remove="tag">SAML XML</span>
+</div>
+
+<div th:if="${debug} != true" th:remove="tag">
+<script type="text/javascript">
+    window.onload = function () {
+        document.redirectForm.submit();
+    };
+</script>
+</div>
