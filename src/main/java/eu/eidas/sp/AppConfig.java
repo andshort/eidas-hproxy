@@ -33,10 +33,6 @@ public class AppConfig {
 		return fetcher;
 	}
 	
-	@Bean
-	public MetadataClockI MetadataClock(){
-		return new SamlEngineSystemClock();
-	}
 	
 	@Bean
 	public Properties configs() {
